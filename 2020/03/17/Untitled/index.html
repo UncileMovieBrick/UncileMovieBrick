@@ -6,13 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Git | 烂笔头的个人博客</title>
+  <title>初步了解权限管理模型 | 烂笔头的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="烂笔头的个人博客">
-<meta property="og:url" content="http://yoursite.com/tags/Git/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;初步了解权限管理模型，为什么需要权限管理模型？权限管理模型的核心是什么？理想中的权限管理是什么？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初步了解权限管理模型">
+<meta property="og:url" content="http://yoursite.com/2020/03/17/Untitled/index.html">
 <meta property="og:site_name" content="烂笔头的个人博客">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;初步了解权限管理模型，为什么需要权限管理模型？权限管理模型的核心是什么？理想中的权限管理是什么？">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200317144712605.png">
+<meta property="article:published_time" content="2020-03-17T07:49:55.000Z">
+<meta property="article:modified_time" content="2020-03-17T08:01:14.959Z">
 <meta property="article:author" content="烂笔头">
 <meta property="article:tag" content="Vue">
 <meta property="article:tag" content="Java">
@@ -27,6 +32,7 @@
 <meta property="article:tag" content="Netty">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200317144712605.png">
   <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
   <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
     <style>
@@ -179,60 +185,197 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Untitled" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2020-03-10T02:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">Git核心命令的使用</a>
+    <h1 class="article-title" itemprop="name">
+      初步了解权限管理模型
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        <a href="/2020/03/17/Untitled/" class="archive-article-date">
+  	<time datetime="2020-03-17T07:49:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
+</a>
+        
+		<div align="center" class="post-count">
+			字数：1.2k字 | 预计阅读时长：4分钟
+		</div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&emsp;&emsp;初步了解权限管理模型，为什么需要权限管理模型？权限管理模型的核心是什么？理想中的权限管理是什么？</p>
+<a id="more"></a>
+<h2 id="为什么需要权限管理？"><a href="#为什么需要权限管理？" class="headerlink" title="为什么需要权限管理？"></a>为什么需要权限管理？</h2><ul>
+<li><strong>安全性</strong>：防止误操作、人为破坏、数据泄露。</li>
+<li><strong>数据隔离</strong>：不同的权限能看到的以及操作的数据不同</li>
+<li><strong>明确职责</strong>：不同的角色所做的操作和所看到的数据不同<h2 id="权限管理的核心是什么？"><a href="#权限管理的核心是什么？" class="headerlink" title="权限管理的核心是什么？"></a>权限管理的核心是什么？</h2></li>
+<li><strong>用户-权限</strong>：<br/><br>&emsp;&emsp;人员少，功能固定，或者特别简单的系统。比如 MySQL 就是属于这种权限管理模式</li>
+<li><strong>RBAC(Role-Based Access Control)</strong>：<br/><br>&emsp;&emsp;基于角色的权限访问控制。在 RBAC 中权限与角色相关联，用户绑定所对应的角色从而得到这些角色的权限，这种关联简化了权限的管理。<br>&emsp; &emsp;在一个组织中，角色是为了完成某种工作而创造出来的，用户则依据他的责任和资格赋予相应的角色。并且，用户也可以很容易的从 A 角色切换成 B 角色。角色可以根据新的需求和系统的合并来赋予新的权限。权限也可以从某个角色中回收。<br>&emsp;&emsp;RBAC 模型主要关注于 角色-用户-权限之间的关系，角色和用户是多对多的关系，角色和权限是多对多的关系。<br>如果现实中，有很多人都有相同的权限，RBAC 可以拓展出 group 这个概念的，group 是可以解决多角色相同权限的问题，比如：A 部门的资料，只能 A 部门的人员看，那么用户的账号就直接赋予 A 部门这个角色组就好了。<br>&emsp; &emsp;RBAC 模型还支持著名的三大安全原则：最小权限原则、责任分离原则、数据抽象原则。<br><img src="https://img-blog.csdnimg.cn/20200317144712605.png" alt="图片来源于网络，侵删"></li>
+</ul>
+<h2 id="理想中的权限管理？"><a href="#理想中的权限管理？" class="headerlink" title="理想中的权限管理？"></a>理想中的权限管理？</h2><ul>
+<li><strong>实现角色级的权限管理</strong>：<br/><br>&emsp;&emsp;角色级的权限管理都是基于 RBAC 模型实现的。这种模型几乎能覆盖所有场景，同时能够满足需求的不断变化，许多临时的调整也能很好的应对。基于 RBAC 的权限的管理，很好的完成了对权限的抽象，只需要根据不同的场景进行不同的实现就好。相对于直接对用户绑定权限，RBAC 可以对用户进行更好的扩展。</li>
+<li><strong>可实现功能级、数据级权限</strong>：<br/><br>&emsp;&emsp;功能级权限就是功能权限管理技术，一般就使用 RBAC 权限管理模型。功能级权限管理系统会提供如下功能：<br/><br>&emsp;&emsp; 1、角色管理系统由用户定义角色赋予权限；<br/><br>&emsp;&emsp; 2、用户角色管理界面，由用户给系统用户赋予角色；<br/><br>&emsp;&emsp; 3、支持用户定义权限。<br/><br>&emsp;&emsp; 目前数据级权限管理没有统一的技术，大体上采用的是如下技术：<br/><br>&emsp;&emsp;1、硬编码，这种情况居多，但是弊端非常显然，耦合性高，不易测试，不易维护；<br/><br>&emsp;&emsp;2、使用规则引擎，有一些企业将这种逻辑用规则的形式体现出来。这可以解决很多问题，但是规则引擎并不是专业用于权限管理，所以对于一些复杂的权限管理就显得力不从心了；<br/><br>&emsp;&emsp;3、使用第三方专业软件。</li>
+<li><strong>简单易操作，能够实现各种需求</strong>：<br/><br>&emsp; &emsp;所有涉及到权限相关的都能有相关的页面可操作，同时能提供一个页面能查询到一个用户当前的权限列表。需要的页面如下：<br/><br>&emsp;&emsp;1、权限管理界面；<br/><br>&emsp;&emsp;2、角色管理界面；<br/><br>&emsp;&emsp;3、用户管理界面；<br/><br>&emsp;&emsp;4、角色和权限关系维护界面；<br/><br>&emsp;&emsp;5、用户和角色关系维护界面。<h2 id="开源的权限管理项目"><a href="#开源的权限管理项目" class="headerlink" title="开源的权限管理项目"></a>开源的权限管理项目</h2></li>
+<li><strong>Spring Security</strong>：<br/><br>&emsp;&emsp;是一个能够为基于 Spring 的企业应用系统，提供声明式的安全控制解决方案的安全框架。<br/><br>&emsp;&emsp;它提供了一组可以在 Spring 应用上下文配置的 Bean，充分利用了 Spring 控制反转、依赖注入和面向切面编程功能。对已有系统提供声明式的安全访问控制功能，减少了为企业系统安全控制编写大量重复代码的工作。</li>
+<li><strong>Apache Shiro</strong>：<br/><br>&emsp;&emsp;Shiro 是一个强大且易用的 Java 安全框架，执行身份验证、授权、密码学和会话管理。Shiro 有易于理解的 API。</li>
+</ul>
 
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢大佬的打赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/17/Untitled/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/03/10/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git核心命令的使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么需要权限管理？"><span class="toc-number">1.</span> <span class="toc-text">为什么需要权限管理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#权限管理的核心是什么？"><span class="toc-number">2.</span> <span class="toc-text">权限管理的核心是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理想中的权限管理？"><span class="toc-number">3.</span> <span class="toc-text">理想中的权限管理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开源的权限管理项目"><span class="toc-number">4.</span> <span class="toc-text">开源的权限管理项目</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -257,9 +400,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
