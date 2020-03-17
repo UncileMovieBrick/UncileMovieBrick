@@ -6,22 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Git核心命令的使用 | 烂笔头的个人博客</title>
+  <title>Tag: 权限模型 RBAC | 烂笔头的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="讲述 Git 的核心命令的使用，希望对 Git 的常见命令能加深记忆和了解。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Git核心命令的使用">
-<meta property="og:url" content="http://yoursite.com/2020/03/10/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="烂笔头的个人博客">
+<meta property="og:url" content="http://yoursite.com/tags/%E6%9D%83%E9%99%90%E6%A8%A1%E5%9E%8B-RBAC/index.html">
 <meta property="og:site_name" content="烂笔头的个人博客">
-<meta property="og:description" content="讲述 Git 的核心命令的使用，希望对 Git 的常见命令能加深记忆和了解。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191119231928467.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuY2xlTW92ZUJyaWNr,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2020-03-10T02:55:00.000Z">
-<meta property="article:modified_time" content="2020-03-17T08:00:58.196Z">
 <meta property="article:author" content="烂笔头">
-<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="SpringCloud">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="MQ">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="Maven">
+<meta property="article:tag" content="Shiro">
+<meta property="article:tag" content="Dubbo">
+<meta property="article:tag" content="Netty">
+<meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191119231928467.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuY2xlTW92ZUJyaWNr,size_16,color_FFFFFF,t_70">
   <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
   <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
     <style>
@@ -174,271 +179,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Git的基本操作" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Git核心命令的使用
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/17/Untitled/" class="archive-article-date">
+  	<time datetime="2020-03-17T07:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/17/Untitled/">初步了解权限管理模型</a>
     </h1>
   
 
-        
-        <a href="/2020/03/10/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2020-03-10T02:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        
-		<div align="center" class="post-count">
-			字数：1.2k字 | 预计阅读时长：4分钟
-		</div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>讲述 Git 的核心命令的使用，希望对 Git 的常见命令能加深记忆和了解。</p>
-<a id="more"></a>
-
-<h3 id="初始化本地的Git仓库"><a href="#初始化本地的Git仓库" class="headerlink" title="初始化本地的Git仓库"></a>初始化本地的Git仓库</h3><p>1、远程仓库克隆到本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;远程仓库地址&gt;</span><br></pre></td></tr></table></figure>
-<p>2、初始化本地目录为Git仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init  &lt;文件夹名称&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="本地添加"><a href="#本地添加" class="headerlink" title="本地添加"></a>本地添加</h3><p>1、添加指定文件到暂存区</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;文件名&gt;</span><br></pre></td></tr></table></figure>
-<p>2、添加指定目录至暂存区</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;目录名&gt;</span><br></pre></td></tr></table></figure>
-<p>3、添加所有</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br></pre></td></tr></table></figure>
-<p>4、将指定目录及子目录移除出暂存区</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached target -r</span><br></pre></td></tr></table></figure>
-<p>5、提交至本地仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit 文件名 -m <span class="string">'提交评论'</span></span><br></pre></td></tr></table></figure>
-<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><p>1、查看当前分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
-<p>2、基于当前分支新建分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名称</span><br></pre></td></tr></table></figure>
-<p>3、基于提交新建分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名称 &lt;commit id&gt;</span><br></pre></td></tr></table></figure>
-<p>4、切换分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名称</span><br></pre></td></tr></table></figure>
-<p>5、合并分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名</span><br></pre></td></tr></table></figure>
-<h3 id="远程仓库管理"><a href="#远程仓库管理" class="headerlink" title="远程仓库管理"></a>远程仓库管理</h3><p>1、查看远程配置 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote [-v]</span><br></pre></td></tr></table></figure>
-<p>2、添加远程地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin http:xxx.xxx</span><br></pre></td></tr></table></figure>
-<p>3、删除远程地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote remove origin</span><br></pre></td></tr></table></figure>
-<p>4、上传新分支至远程仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --<span class="built_in">set</span>-upstream origin master</span><br></pre></td></tr></table></figure>
-<p>5、将本地分支与远程建立关联<br>git branch –track –set-upstream-to=origin/test test</p>
-<h2 id="git-底层原理"><a href="#git-底层原理" class="headerlink" title="git 底层原理"></a>git 底层原理</h2><h3 id="GIT存储对像-HashMap"><a href="#GIT存储对像-HashMap" class="headerlink" title="GIT存储对像(HashMap)"></a>GIT存储对像(HashMap)</h3><p>Git 是一个内容寻址文件系统，其核心部分是一个简单的键值对数据库，你可以向数据库中插入任意内容，它会返回一个用于取回该值的hash 键。</p>
-<p>1、git 键值库中插入数据</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'sss'</span> | git <span class="built_in">hash</span>-object -w --stdin</span><br><span class="line">79362d07cf264f8078b489a47132afbc73f87b9a</span><br></pre></td></tr></table></figure>
-
-<p>2、基于键获取指定内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -p 79362d07cf264f8078b489a47132afbc73f87b9a</span><br></pre></td></tr></table></figure>
-
-<p>Git基于该功能 把每个文件的版本中内容都保存在数据库中，当要进行版本回滚的时候就通过其中一个键将期取回并替换。</p>
-<h3 id="模拟演示git-版写入与回滚过程"><a href="#模拟演示git-版写入与回滚过程" class="headerlink" title="模拟演示git 版写入与回滚过程"></a>模拟演示git 版写入与回滚过程</h3><p>1、查找所有的git 对像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find .git/objects/ -<span class="built_in">type</span> f</span><br></pre></td></tr></table></figure>
-
-<p>2、写入版本1</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'version1'</span> &gt; README.MF; git <span class="built_in">hash</span>-object -w README.MF;</span><br></pre></td></tr></table></figure>
-
-<p>3、写入版本2</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'version2'</span> &gt; README.MF; git <span class="built_in">hash</span>-object -w README.MF;</span><br></pre></td></tr></table></figure>
-
-<p>4、写入版本3</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'version3'</span> &gt; README.MF; git <span class="built_in">hash</span>-object -w README.MF;</span><br></pre></td></tr></table></figure>
-
-<p>5、 回滚指定版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -p c11e96db44f7f3bc4c608aa7d7cd9ba4ab25066e &gt; README.MF</span><br></pre></td></tr></table></figure>
-
-<p>我们平常用的 git add 其实就是把修改之后的内容插入到键值库中。当我们执行 git add README.MF 等同于执行了 git hash-object -w README.MF 把文件写到数据库中。</p>
-<p>我们解决了存储的问题，但其只能存储内容同并没有存储文件名，如果要进行回滚 怎么知道哪个内容对应哪个文件呢？树对象就解决了文件名存储的问题 。</p>
-<h3 id="GIT树对像"><a href="#GIT树对像" class="headerlink" title="GIT树对像"></a>GIT树对像</h3><p>树对像解决了文件名的问题，它的目的将多个文件名组织在一起，其内包含多个文件名称与其对应的Key和其它树对像的用引用，可以理解成操作系统当中的文件夹，一个文件夹包含多个文件和多个其它文件夹。<br><img src="https://img-blog.csdnimg.cn/20191119231928467.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1VuY2xlTW92ZUJyaWNr,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>每一个分支当中都关联了一个树对像，他存储了当前分支下所有的文件名及对应的 key<br>通过以下命令即可查看<br>1、查看分支树</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -p master^&#123;tree&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="git提交对象"><a href="#git提交对象" class="headerlink" title="git提交对象"></a>git提交对象</h3><p>一次提交即为当前版本的一个快照，该快照就是通过提交对像保存，其存储的内容为：一个顶级树对象、上一次提交的对像啥希、提交者用户名及邮箱、提交时间戳、提交评论。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -p b2395925b5f1c12bf8cb9602f05fc8d580311836</span><br><span class="line">tree 002adb8152f7cd49f400a0480ef2d4c09b060c07</span><br><span class="line">parent 8be903f5e1046b851117a21cdc3c80bdcaf97570</span><br><span class="line">author tommy &lt;tommy@tuling.com&gt; 1532959457 +0800</span><br><span class="line">committer tommy &lt;tommy@tuling.com&gt; 1532959457 +0800</span><br></pre></td></tr></table></figure>
-
-<p>通过上面的知识，我们可以推测出从修改一个文件到提交的过程总共生成了三个对像：<br>一个内容对象 = =&gt; 存储了文件内容<br>一个树对像 = =&gt; 存储了文件名及内容对像的key<br>一个提交对像 = =&gt; 存储了树对像的key 及提交评论。 </p>
-<h3 id="GIT引用"><a href="#GIT引用" class="headerlink" title="GIT引用"></a>GIT引用</h3><p>当我们执行 <code>git branch 分支名</code>时创建了一个分支，其本质就是在git 基于指定提交创建了一个引用文件，保存在 .git\refs\heads\ 下。<br>1、分支的创建</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch dev </span><br><span class="line">cat.git\refs\heads\dev</span><br></pre></td></tr></table></figure>
-<p>git 总共 有三种类型的引用：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.分支引用<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.远程分支引用<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.标签引用<br>2、查询比较两个版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> master..experiment</span><br></pre></td></tr></table></figure>
-<p>3、版本提交历史网络</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --pretty=format:<span class="string">'%h %s'</span> --graph</span><br></pre></td></tr></table></figure>
-<p>4、查看分支树</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cat-file -p master^&#123;tree&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢大佬的打赏<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/alipay.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/wechat.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">权限模型 RBAC</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/10/Git%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/03/17/Untitled/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          初步了解权限管理模型
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化本地的Git仓库"><span class="toc-number">1.</span> <span class="toc-text">初始化本地的Git仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地添加"><span class="toc-number">2.</span> <span class="toc-text">本地添加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支管理"><span class="toc-number">3.</span> <span class="toc-text">分支管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程仓库管理"><span class="toc-number">4.</span> <span class="toc-text">远程仓库管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-底层原理"><span class="toc-number"></span> <span class="toc-text">git 底层原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GIT存储对像-HashMap"><span class="toc-number">1.</span> <span class="toc-text">GIT存储对像(HashMap)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟演示git-版写入与回滚过程"><span class="toc-number">2.</span> <span class="toc-text">模拟演示git 版写入与回滚过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GIT树对像"><span class="toc-number">3.</span> <span class="toc-text">GIT树对像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git提交对象"><span class="toc-number">4.</span> <span class="toc-text">git提交对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GIT引用"><span class="toc-number">5.</span> <span class="toc-text">GIT引用</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -463,9 +257,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
